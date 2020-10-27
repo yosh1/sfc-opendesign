@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reaction Flower</title>
+<link rel="stylesheet" href="style.css">
+</head>
+ 
+<body>
+<div class="block" id="container">  <!-- video の上に canvas をオーバーレイするための div 要素 -->
+  <video id="video" width="800" height="600" autoplay></video>  <!-- カメラ映像を流す video -->
+  <canvas id="canvas" width="800" height="600"></canvas>        <!-- 重ねて描画する canvas -->
+</div>
+<!-- データ表示 -->
+<div class="block" id="dat"></div> 
+<!-- <img src="images/dendenNormal.png" alt="images" id="denden"> -->
+
+
+<!-- JSファイル読み込み -->
+<script src="js/clmtrackr.js"></script>          <!-- clmtrackr のメインライブラリの読み込み -->
+<script src="js/model_pca_20_svm.js"></script>   <!-- 顔モデル（※）の読み込み -->
+
+<script src="js/model_pca_20_svm_emotion.js"></script>   <!-- ★顔モデル（※1）の読み込み -->
+<script src="js/emotionClassifier.js"></script>  <!-- ★感情を分類する外部関数の読み込み -->
+<script src="js/emotionModel.js"></script>       <!-- ★感情モデル（※2）の読み込み -->
+
+<script src="main.js"></script> 
+
+</body>
+</html>
