@@ -45,11 +45,11 @@ function drawLoop() {
   var emotion = classifier.meanPredict(parameters);     // ★そのパラメータから感情を推定して emotion に結果を入れる
   showEmotionData(emotion);                             // ★感情データを表示
 
-
   context.clearRect(0, 0, canvas.width, canvas.height); // canvas をクリア
-  tracker.draw(canvas);                                 // canvas にトラッキング結果を描画
+  tracker.draw(canvas); // canvas にトラッキング結果を描画
 
-    socket.emit('reaction', emotion);
+  socket.emit('reaction', emotion.reduce((a,b)=>a.value>b.value?a:b).emotion);
+  // オブジェクトをループして最大値のものを抽出
 }
 drawLoop();                                             // drawLoop 関数をトリガー
 
