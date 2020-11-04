@@ -19,7 +19,7 @@ app.get('/',function(req,res){
 // GET http://localhost:3000/post
 app.post('/post', (req, res) => {
   console.log(req.body);
-  // res.send("Received POST Data!");
+  res.send(req.json);
   res.json({
         message: req.body
     });
