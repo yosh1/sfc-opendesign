@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors);
+app.use(cors());
 
 const port = process.env.PORT || 3000;
 
