@@ -1,11 +1,16 @@
 'use strict';
 
-let express = require('express');
-let app = express();
-let bodyParser = require('body-parser');
+const express = require('express');
+const cors = require('cors')
+const app = express();
+const bodyParser = require('body-parser');
+
+// import chirimen
+// https://tutorial.chirimen.org/raspi/nodejs
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors);
 
 const port = process.env.PORT || 3000;
 
@@ -26,4 +31,4 @@ app.post('/post', (req, res) => {
 });
 
 app.listen(port);
-console.log('listen on port ' + port);
+console.log('Listen on port: ' + port);

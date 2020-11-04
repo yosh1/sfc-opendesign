@@ -18,7 +18,10 @@
   "homepage": "https://github.com/yosh1/sfc-opendesign#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "node-web-gpio": "^1.0.1",
+    "node-web-i2c": "^1.1.4"
   }
 }
