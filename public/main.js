@@ -7,7 +7,7 @@ var dat = document.getElementById("dat");
 var denden = document.getElementById("denden");
 
 const dendenImg = ["dendenAngry.png", "dendenDisgusted.png", "dendenFear.png", "dendenSad.png", "dendenSuprised.png", "dendenHappy.png", "dendenNormal.png"];
- 
+
 // getUserMedia によるカメラ映像の取得
 var media = navigator.mediaDevices.getUserMedia({       // メディアデバイスを取得
   video: {facingMode: "user"},                          // カメラの映像を使う（スマホならインカメラ）
@@ -16,7 +16,7 @@ var media = navigator.mediaDevices.getUserMedia({       // メディアデバイ
 media.then((stream) => {                                // メディアデバイスが取得できたら
   video.srcObject = stream;                             // video 要素にストリームを渡す
 });
- 
+
 // clmtrackr の開始
 var tracker = new clm.tracker();  // tracker オブジェクトを作成
 tracker.init(pModel);             // tracker を所定のフェイスモデル（※）で初期化
@@ -48,7 +48,7 @@ function drawLoop() {
   // console.log(JSON.stringify(generateData(emotion)));
 }
 drawLoop();                                             // drawLoop 関数をトリガー
- 
+
 // 顔部品（特徴点）の位置データを表示する showData 関数
 function showData(pos) {
   var str1 = "";                                         // データの文字列を入れる変数
@@ -71,7 +71,7 @@ function showEmotionData(emo) {
     str2 += emo[i].emotion + ": "                        // 感情名
          + emo[i].value.toFixed(1) + "<br>";            // 感情の程度（小数第一位まで）
 
-    
+
   }
   dat.innerHTML = str2;                                  // データ文字列の表示
 }
@@ -93,33 +93,33 @@ function changeDendenFace(emo){
 }
 
 
-function sendData(data){ 
-  const targetUrl = 'https://sfc-opendesign.herokuapp.com/post';
+// function sendData(data){
+//   const targetUrl = 'https://sfc-opendesign.herokuapp.com/post';
 
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function()
-    {
-        var READYSTATE_COMPLETED = 4;
-        var HTTP_STATUS_OK = 200;
- 
-        if( this.readyState == READYSTATE_COMPLETED
-         && this.status == HTTP_STATUS_OK )
-        {
-            console.log( this.responseText );
-        }
-    }
-  xhr.open( 'POST', targetUrl);
-  xhr.setRequestHeader( 'Content-Type', 'application/json');
-  xhr.send(JSON.stringify(data));
-}
+//   var xhr = new XMLHttpRequest();
+//   xhr.onreadystatechange = function()
+//     {
+//         var READYSTATE_COMPLETED = 4;
+//         var HTTP_STATUS_OK = 200;
 
-function generateData(emo){
-  var sendData = "{";
-  for(var i = 0; i < emo.length; i++) {                 // 全ての感情（6種類）について
-    sendData += "\"" + emo[i].emotion + "\":" + emo[i].value.toFixed(1);
-    if(i == emo.length-1) continue;
-    sendData +=  ",";
-  }
-  sendData += "}"
-  return sendData;
-}
+//         if( this.readyState == READYSTATE_COMPLETED
+//          && this.status == HTTP_STATUS_OK )
+//         {
+//             console.log( this.responseText );
+//         }
+//     }
+//   xhr.open( 'POST', targetUrl);
+//   xhr.setRequestHeader( 'Content-Type', 'application/json');
+//   xhr.send(JSON.stringify(data));
+// }
+
+// function generateData(emo){
+//   var sendData = "{";
+//   for(var i = 0; i < emo.length; i++) {                 // 全ての感情（6種類）について
+//     sendData += "\"" + emo[i].emotion + "\":" + emo[i].value.toFixed(1);
+//     if(i == emo.length-1) continue;
+//     sendData +=  ",";
+//   }
+//   sendData += "}"
+//   return sendData;
+// }
