@@ -8,7 +8,7 @@
 $ npm i
 ```
 
-### test (nodemon)
+### test (nodemon & broswer up)
 
 ```
 $ npm run test
@@ -18,6 +18,12 @@ $ npm run test
 
 ```
 $ npm run start
+```
+
+### nodemon
+
+```
+$ npm run nodemon
 ```
 
 ### open browser
