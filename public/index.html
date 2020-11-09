@@ -4,12 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Reaction Flower</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./style.css">
     <script src="/socket.io/socket.io.js"></script>
 
   </head>
 
   <body>
+    <header>
+        <nav>
+          <div class="nav-wrapper">
+            <a href="/" class="brand-logo center">Reaction Flower</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+              <li><a href="https://github.com/yosh1/reaction-flower">Git Repo</a></li>
+            </ul>
+          </div>
+        </nav>
+    </header>
     <div class="block" id="container">
       <!-- video の上に canvas をオーバーレイするための div 要素 -->
       <video id="video" width="800" height="600" autoplay></video> <!-- カメラ映像を流す video -->
