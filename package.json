@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/yosh1/sfc-opendesign.git"
+    "url": "git+ssh://git@github.com/yosh1/reaction-flower.git"
   },
   "author": "Yoshihisa Kaino <yoppy1125yoppy@gmail.com> (https://github.com/yoshi1125hisa)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yosh1/sfc-opendesign/issues"
+    "url": "https://github.com/yosh1/reaction-flower/issues"
   },
-  "homepage": "https://github.com/yosh1/sfc-opendesign#readme",
+  "homepage": "https://github.com/yosh1/reaction-flower#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
