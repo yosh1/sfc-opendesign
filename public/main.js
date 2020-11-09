@@ -3,6 +3,14 @@ socket.on('connect', function () {
     console.log("Socket connected: " + socket.connected);
 });
 
+// original token
+function getToken(){
+  return(
+    Math.floor( Math.random() * 100000).toString() +
+    new Date().getTime()
+  );
+}
+
 const video = document.getElementById("video");           // video 要素を取得
 const canvas = document.getElementById("canvas");         // canvas 要素の取得
 const context = canvas.getContext("2d");                  // canvas の context の取得
