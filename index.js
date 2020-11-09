@@ -14,7 +14,9 @@ app.get('/' , function(req, res, next){
 });
 
 io.on('connection',function(socket){
-    console.log('connected');
+    socket.on('reaction',function(react){
+        console.log('reaction: ' + react);
+    });
 });
 
 http.listen(port, function(){
