@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "nodemon index.js"
+    "test": "nodemon index.js && opener http://localhost:3000/",
+    "browser": "opener http://localhost:3000/"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "socket.io": "^3.0.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "opener": "^1.5.2"
   }
 }

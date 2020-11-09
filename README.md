@@ -19,3 +19,9 @@ $ npm run test
 ```
 $ npm run start
 ```
+
+### open browser
+
+```
+$ npm run broswer
+```
