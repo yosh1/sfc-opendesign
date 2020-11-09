@@ -21,17 +21,15 @@
           </div>
         </nav>
     </header>
-    <div class="block" id="container">
+    <main class="container">
+    <div id="container">
       <!-- video の上に canvas をオーバーレイするための div 要素 -->
       <video id="video" width="800" height="600" autoplay></video> <!-- カメラ映像を流す video -->
       <canvas id="canvas" width="800" height="600"></canvas> <!-- 重ねて描画する canvas -->
     </div>
-    <!-- データ表示 -->
     <div class="block" id="dat"></div>
-    <!-- <img src="images/dendenNormal.png" alt="images" id="denden"> -->
+    </main>
 
-
-    <!-- JSファイル読み込み -->
     <script src="./js/clmtrackr.js"></script> <!-- clmtrackr のメインライブラリの読み込み -->
     <script src="./js/model_pca_20_svm.js"></script> <!-- 顔モデル（※）の読み込み -->
 

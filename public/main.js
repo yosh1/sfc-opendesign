@@ -63,5 +63,8 @@ function showEmotionData(emo) {
     str2 += emo[i].emotion + ": "                        // 感情名
          + emo[i].value.toFixed(1) + "<br>";            // 感情の程度（小数第一位まで）
   }
-  dat.innerHTML = str2;                                  // データ文字列の表示
+
+  maxEmo = emo.reduce((a,b)=>a.value>b.value?a:b).emotion + "<br/><br/>";
+
+  dat.innerHTML = maxEmo + str2;                                  // データ文字列の表示
 }
