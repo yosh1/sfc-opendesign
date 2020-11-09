@@ -1,5 +1,5 @@
 {
-  "name": "open-design",
+  "name": "reaction-flower",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -24,8 +24,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "moment": "^2.29.1",
-    "node-web-gpio": "^1.0.1",
-    "node-web-i2c": "^1.1.4",
     "socket.io": "^3.0.1"
   },
   "devDependencies": {
