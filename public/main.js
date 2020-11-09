@@ -1,3 +1,9 @@
+var socket = io();
+socket.on('connect', function () {
+    console.log("Socket connected: " + socket.connected);
+});
+
+
 // もろもろの準備
 const video = document.getElementById("video");           // video 要素を取得
 const canvas = document.getElementById("canvas");         // canvas 要素の取得
@@ -43,9 +49,7 @@ function drawLoop() {
   context.clearRect(0, 0, canvas.width, canvas.height); // canvas をクリア
   tracker.draw(canvas);                                 // canvas にトラッキング結果を描画
 
-  //送信
-  sendData(generateData(emotion));
-  // console.log(JSON.stringify(generateData(emotion)));
+    socket.emit('reaction', emotion);
 }
 drawLoop();                                             // drawLoop 関数をトリガー
 
@@ -70,8 +74,6 @@ function showEmotionData(emo) {
   for(var i = 0; i < emo.length; i++) {                 // 全ての感情（6種類）について
     str2 += emo[i].emotion + ": "                        // 感情名
          + emo[i].value.toFixed(1) + "<br>";            // 感情の程度（小数第一位まで）
-
-
   }
   dat.innerHTML = str2;                                  // データ文字列の表示
 }
