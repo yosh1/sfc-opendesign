@@ -1,5 +1,7 @@
 # [reaction flower](https://sfc-opendesign.herokuapp.com/)
 
+![Node.js CI](https://github.com/yosh1/reaction-flower/workflows/Node.js%20CI/badge.svg)
+
 ---
 
 ## How to run
