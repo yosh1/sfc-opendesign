@@ -1,4 +1,4 @@
-# [reaction flower](https://sfc-opendesign.herokuapp.com/)
+# [reaction flower](https://reaction-flower.herokuapp.com/)
 
 ![Node.js CI](https://github.com/yosh1/reaction-flower/workflows/Node.js%20CI/badge.svg)
 
