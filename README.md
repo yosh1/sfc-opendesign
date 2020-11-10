@@ -33,3 +33,7 @@ $ npm run nodemon
 ```
 $ npm run broswer
 ```
+
+## LICENSE
+
+Under [MIT License](./LICENSE.md) .
