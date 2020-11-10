@@ -1,6 +1,23 @@
+function generateUuid() {
+    let chars = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".split("");
+    for (let i = 0, len = chars.length; i < len; i++) {
+        switch (chars[i]) {
+            case "x":
+                chars[i] = Math.floor(Math.random() * 16).toString(16);
+                break;
+            case "y":
+                chars[i] = (Math.floor(Math.random() * 4) + 8).toString(16);
+                break;
+        }
+    }
+    return chars.join("");
+}
+
+genUUID = generateUuid();
+
 var socket = io();
 socket.on('connect', function () {
-    console.log("Socket connected: " + socket.connected);
+    console.log("Socket connected: " + socket.connected + '\nGenerated UUID: ' + genUUID);
 });
 
 // original token
@@ -49,8 +66,12 @@ function drawLoop() {
   context.clearRect(0, 0, canvas.width, canvas.height); // canvas をクリア
   tracker.draw(canvas); // canvas にトラッキング結果を描画
 
-  socket.emit('reaction', emotion.reduce((a,b)=>a.value>b.value?a:b).emotion);
-  // オブジェクトをループして最大値のものを抽出
+  var sendData = function(){
+    socket.emit('data', {uuid: genUUID, emo: emotion.reduce((a,b)=>a.value>b.value?a:b).emotion});
+    console.log({uuid: genUUID, emo: emotion.reduce((a,b)=>a.value>b.value?a:b).emotion});
+    // オブジェクトをループして最大値のものを抽出
+  }
+  setInterval(sendData, 1000);
 }
 drawLoop();                                             // drawLoop 関数をトリガー
 
