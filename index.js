@@ -6,45 +6,75 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 const path = require('path');
+const Obniz = require("obniz");
+let obniz = new Obniz("76098301");
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/' , function(req, res, next){
    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
+obniz.onconnect = async function () {
+
+let dataList = []
+let happyCount = 0
+let surprisedCount = 0
+
+function initList(){
+    dataList = []
+    happyCount = 0
+    surprisedCount = 0
+}
+
+setInterval(initList, 1000);
+
 
 io.on('connection',function(socket){
-    // 同時接続数
     let conNum = socket.client.conn.server.clientsCount;
-    console.log('connection: ', conNum);
-    io.sockets.emit('count', conNum);
+    // console.log('connection: ', conNum);
 
     socket.on('data',function(data){
-        let datas = []
 
-        console.log(data);
-
-        if (datas.length === 0){
-            datas.push(data);
-        } else if (datas.length === 1){
-            if (data.uuid !== datas[0].uuid){
-                datas.push(data)
-            }
-        } else{
-            for (let i = 0; datas.length-1; i++){
-                if (data.uuid !== datas[i].uuid){
-                    if(datas.length == i){
-                        datas.push(data)
-                    }
-                }
-            }
+        if (dataList.length === 0){
+            dataList.push(data);
+             checkFace(data);
+        } else if (dataList.some(dataList => dataList.uuid === data.uuid)){
+        } else {
+            dataList.push(data);
+             checkFace(data);
         }
+    })
 
-        console.log(datas);
+    function checkFace(face) {
 
-    });
-});
+    switch (face.emo) {
+        case 'happy':
+            happyCount++;
+            moveObniz(happyCount);
+            break;
+        case 'surprised':
+            surprisedCount++;
+            moveObniz(surprisedCount);
+            break;
+        default:
+            moveObniz();
+            break;
+    }
+}
+
+function moveObniz(count) {
+    let led = obniz.wired("LED", { anode:0, cathode:1 } );
+    // 過半数以上
+    if (count > conNum / 2){
+        led.on();
+    }else{
+        led.off();
+    }
+}
+})
 
 http.listen(port, function(){
     console.log('Listen on port: ' + port);
 });
+
+}
