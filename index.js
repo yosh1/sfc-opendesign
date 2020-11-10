@@ -27,7 +27,7 @@ io.on('connection',function(socket){
         if (datas.length === 0){
             datas.push(data);
         } else if (datas.length === 1){
-            if (data.uuid !== datas[i].uuid){
+            if (data.uuid !== datas[0].uuid){
                 datas.push(data)
             }
         } else{
