@@ -14,13 +14,33 @@ app.get('/' , function(req, res, next){
 });
 
 io.on('connection',function(socket){
-    socket.on('reaction',function(react){
-        console.log('reaction: ' + react);
+    // 同時接続数
+    let conNum = socket.client.conn.server.clientsCount;
+    console.log('connection: ', conNum);
+    io.sockets.emit('count', conNum);
 
-        // 同時接続数
-        let conNum = socket.client.conn.server.clientsCount;
-        console.log('connection: ', conNum);
-        io.sockets.emit('count', conNum);
+    socket.on('data',function(data){
+        let datas = []
+
+        console.log(data);
+
+        if (datas.length === 0){
+            datas.push(data);
+        } else if (datas.length === 1){
+            if (data.uuid !== datas[i].uuid){
+                datas.push(data)
+            }
+        } else{
+            for (let i = 0; datas.length-1; i++){
+                if (data.uuid !== datas[i].uuid){
+                    if(datas.length == i){
+                        datas.push(data)
+                    }
+                }
+            }
+        }
+
+        console.log(datas);
 
     });
 });
