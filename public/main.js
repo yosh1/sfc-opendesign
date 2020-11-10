@@ -66,12 +66,12 @@ function drawLoop() {
   context.clearRect(0, 0, canvas.width, canvas.height); // canvas をクリア
   tracker.draw(canvas); // canvas にトラッキング結果を描画
 
-  var sendData = function(){
+  function sendData(){
     socket.emit('data', {uuid: genUUID, emo: emotion.reduce((a,b)=>a.value>b.value?a:b).emotion});
     console.log({uuid: genUUID, emo: emotion.reduce((a,b)=>a.value>b.value?a:b).emotion});
     // オブジェクトをループして最大値のものを抽出
-  }
-  setInterval(sendData, 1000);
+    }
+    sendData();
 }
 drawLoop();                                             // drawLoop 関数をトリガー
 
@@ -97,3 +97,4 @@ function showEmotionData(emo) {
 
   dat.innerHTML = maxEmo + str2;                                  // データ文字列の表示
 }
+
