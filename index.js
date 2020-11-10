@@ -66,9 +66,11 @@ function moveObniz(count) {
     let led = obniz.wired("LED", { anode:0, cathode:1 } );
     // 過半数以上
     if (count > conNum / 2){
-        led.on();
+        obniz.getIO(0).output(true);
+        obniz.getIO(1).output(true);
     }else{
-        led.off();
+        obniz.io0.end();
+        obniz.io1.end();
     }
 }
 })
