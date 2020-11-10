@@ -4,6 +4,10 @@
 
 ---
 
+## Sample
+
+![](./assets/thumbnail.jpg)
+
 ## How to run
 
 ```
