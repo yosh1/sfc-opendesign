@@ -6,6 +6,10 @@ This application can detect your emotions through your facial expression. There 
 
 ---
 
+## Require
+- obniz device
+- node.js
+
 ## Sample
 
 ![](./assets/thumbnail.jpg)
