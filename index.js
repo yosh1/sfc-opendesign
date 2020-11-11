@@ -16,6 +16,9 @@ app.get('/' , function(req, res, next){
 });
 obniz.onconnect = async function () {
 
+    let happyLed = obniz.wired("LED", { anode:2, cathode:3 } );
+    let surprisedLed = obniz.wired("LED", {anode:5, cathode:4});
+
 let dataList = []
 let happyCount = 0
 let surprisedCount = 0
@@ -50,11 +53,11 @@ io.on('connection',function(socket){
     switch (face.emo) {
         case 'happy':
             happyCount++;
-            moveObniz(happyCount);
+            moveObniz(happyCount, "happy");
             break;
         case 'surprised':
             surprisedCount++;
-            moveObniz(surprisedCount);
+            moveObniz(surprisedCount, "surprised");
             break;
         default:
             moveObniz();
@@ -62,13 +65,26 @@ io.on('connection',function(socket){
     }
 }
 
-function moveObniz(count) {
-    let led = obniz.wired("LED", { anode:0, cathode:1 } );
+function moveObniz(count, emo) {
     // 過半数以上
     if (count > dataList.length / 2){
+        switch (emo) {
+            case "happy":
+                happyLed.on();
+                surprisedLed.off();
+                break;
+            case "surprised":
+                surprisedLed.on();
+                happyLed.off();
+                break;
+            default:
+                break;
+        }
         obniz.getIO(0).output(true);
         obniz.getIO(1).output(false);
     }else{
+        happyLed.off();
+        surprisedLed.off();
         obniz.io0.end();
         obniz.io1.end();
     }
