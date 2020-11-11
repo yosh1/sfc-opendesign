@@ -67,7 +67,7 @@ function moveObniz(count) {
     // 過半数以上
     if (count > conNum / 2){
         obniz.getIO(0).output(true);
-        obniz.getIO(1).output(true);
+        obniz.getIO(1).output(false);
     }else{
         obniz.io0.end();
         obniz.io1.end();
