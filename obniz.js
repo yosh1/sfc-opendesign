@@ -1,16 +1,13 @@
 'use strict';
 
-const Obniz = require("obniz");
-let obniz = new Obniz("76098301");
-
-function obnizStart(){
+exports.obnizStart = function(){
     obniz.onconnect = async function () {
-        obniz.io0.output(true);
-        obniz.io1.output(true);
+        obniz.getIO(0).output(true);
+        obniz.getIO(1).output(false);
     }
 }
 
-function obnizStop() {
+exports.obnizStop = function() {
     obniz.onconnect = async function () {
         obniz.io0.end();
         obniz.io1.end();
