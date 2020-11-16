@@ -49,19 +49,19 @@ obniz.onconnect = async function () {
       switch (face.emo) {
         case "happy":
           happyCount++;
-          moveObniz(happyCount, "happy");
+          checkFace(happyCount, "happy");
           break;
         case "surprised":
           surprisedCount++;
-          moveObniz(surprisedCount, "surprised");
+          checkFace(surprisedCount, "surprised");
           break;
         default:
-          moveObniz();
+          checkFace();
           break;
       }
     }
 
-    function moveObniz(count, emo) {
+    function checkFace(count, emo) {
       // 過半数以上
       if (count > dataList.length / 2) {
         switch (emo) {

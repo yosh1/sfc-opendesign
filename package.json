@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "start:presen": "node presentation.js",
     "test": "concurrently \"npm run nodemon\" \"npm run browser\"",
     "nodemon": "nodemon index.js",
     "browser": "opener http://localhost:3000/"

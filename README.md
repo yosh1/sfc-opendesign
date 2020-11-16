@@ -32,6 +32,12 @@ $ npm run test
 $ npm run start
 ```
 
+### serve (for presentation)
+
+```
+$ npm run start:presen
+```
+
 ### nodemon
 
 ```
