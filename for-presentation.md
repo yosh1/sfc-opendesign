@@ -4,8 +4,9 @@
 
 ### 改善🔧
 
-- `./presentation.js` のコメントアウト部分の修正
-    - Arduinoなり、他のもので動作するようにする
+- [ ] `./presentation.js` のコメントアウト部分の修正
+    - [ ]Arduinoなり、他のもので動作するようにする
+- [ ] `happy` スコアが `0.2` になるようなバグの修正
 
 ### 当日のためのリハーサルをする項目🔥
 1. `node.js / npm` が動く環境で、 `npm run start:presen` を実行
