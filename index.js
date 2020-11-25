@@ -21,7 +21,7 @@ app.get("/", function (req, res, next) {
 });
 
 app.get('/getHappyNum', (req, res) => {
-  res.json({ id: dataList.length, happyCount: happyCount });
+  res.json({ dataNum: dataList.length, happyCount: happyCount });
 });
 
 
