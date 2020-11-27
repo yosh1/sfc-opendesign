@@ -10,6 +10,8 @@ const Obniz = require("obniz");
 const obniz = new Obniz("76098301");
 const obnizIO = require("./obniz.js");
 
+const cors = require('cors');
+
 let dataList = [];
 let happyCount = 0;
 let surprisedCount = 0;
@@ -20,7 +22,8 @@ app.get("/", function (req, res, next) {
   res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
-app.get('/getHappyNum', (req, res) => {
+//接続数とハッピー数を返すapi（CORS許可されている)
+app.get('/getHappyNum',cors(), (req, res) => {
   res.json({ dataNum: dataList.length, happyCount: happyCount });
 });
 
