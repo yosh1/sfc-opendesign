@@ -16,6 +16,9 @@ let dataList = [];
 let happyCount = 0;
 let surprisedCount = 0;
 
+let dataNumJson = 0;
+let happyCountJson = 0;
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res, next) {
@@ -24,7 +27,7 @@ app.get("/", function (req, res, next) {
 
 //接続数とハッピー数を返すapi（CORS許可されている)
 app.get('/getHappyNum',cors(), (req, res) => {
-  res.json({ dataNum: dataList.length, happyCount: happyCount });
+  res.json({ dataNum: dataNumJson, happyCount:  happyCountJson});
 });
 
 
@@ -33,6 +36,11 @@ http.listen(port, function () {
 });
 
 function initList() {
+
+  //json用に値をセット
+  dataNumJson = dataList.length;
+  happyCountJson = happyCount;
+
   dataList = [];
   happyCount = 0;
   surprisedCount = 0;
