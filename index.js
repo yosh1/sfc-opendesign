@@ -11,6 +11,7 @@ const obniz = new Obniz("76098301");
 const obnizIO = require("./obniz.js");
 
 const cors = require('cors');
+const { exit } = require("process");
 
 let dataList = [];
 let happyCount = 0;
@@ -77,7 +78,7 @@ io.on("connection", function (socket) {
         checkFace(surprisedCount, "surprised");
         break;
       default:
-        checkFace();
+        // checkFace();
         break;
     }
 
@@ -87,42 +88,50 @@ io.on("connection", function (socket) {
 
     // 過半数以上
     if (count > dataList.length / 2) {
-      obnizShow(emo);
+      // obnizShow(emo);
     } else {
-      obnizShow("none");
+      // obnizShow("none");
     }
   }
 });
 
 
 
-obniz.onconnect = async function () {
-  const happyLed = obniz.wired("LED", { anode: 2, cathode: 3 });
-  const surprisedLed = obniz.wired("LED", { anode: 5, cathode: 4 });
 
-};
 
 function obnizShow(emoToka){
-  if(obniz.connectionState != "connected") return;
-  switch (emo) {
-    case "happy":
-      happyLed.on();
-      surprisedLed.off();
-      obnizIO.obnizStart();
-      break;
-    case "surprised":
-      surprisedLed.on();
-      happyLed.off();
-      obnizIO.obnizStart();
-      break;
-    case "none":
-      happyLed.off();
-      surprisedLed.off();
-      obnizIO.obnizStop();
-      break;
-    default:
-      break;
-  }
+
+  let happyLed;
+  let surprisedLed;
+  obniz.onconnect = async function () {
+    happyLed = obniz.wired("LED", { anode: 2, cathode: 3 });
+    surprisedLed = obniz.wired("LED", { anode: 5, cathode: 4 });
+    switch (emoToka) {
+      case "happy":
+        console.log('happy');
+        happyLed.on();
+        surprisedLed.off();
+        obnizIO.obnizStart();
+        break;
+      case "surprised":
+        surprisedLed.on();
+        happyLed.off();
+        obnizIO.obnizStart();
+        break;
+      case "none":
+        happyLed.off();
+        surprisedLed.off();
+        obnizIO.obnizStop();
+        break;
+      default:
+        break;
+    }
+  
+  };
+
+  // console.log(obniz.connectionState);
+  // if(obniz.connectionState != "connected") return ;
+  
 }
 
 
